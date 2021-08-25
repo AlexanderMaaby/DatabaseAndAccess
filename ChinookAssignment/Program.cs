@@ -16,15 +16,10 @@ namespace ChinookAssignment
             Customer testtest = repository.GetCustomerByName("Ell");
             Console.WriteLine(testtest.CustomerFirstName + " " +  testtest.CustomerSurename);
             int x = 0;
-            foreach (Customer dudedude in listemedudes)
+            List<CustomerSpender> listetrist = repository.GetAllCustomersTotalAmountSpent();
+            foreach (CustomerSpender te in listetrist)
             {
-                x++;
-                Console.WriteLine(x + " " + dudedude.CustomerFirstName);
-            }
-            List<CustomerCountry> besttest = repository.GetAllCustomerCountries();
-            foreach (CustomerCountry west in besttest)
-            {
-                Console.WriteLine(west.Country + " - " + west.Count);
+                Console.WriteLine(te.CustomerId + "    -    " + te.TotalSum);
             }
 
         }

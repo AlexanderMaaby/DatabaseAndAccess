@@ -230,5 +230,39 @@ namespace ChinookAssignment
             }
             return countries;
         }
+
+        public List<CustomerSpender> GetAllCustomersTotalAmountSpent()
+        {
+            List<CustomerSpender> customers = new List<CustomerSpender>();
+            CustomerSpender customer = new CustomerSpender();
+            string sql = "SELECT CustomerId, SUM(Total) AS 'Total sum per customer' From Invoice GROUP BY CustomerId ORDER BY SUM(Total) DESC;";
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(ConnectionHelper.GetConnectionstring()))
+                {
+                    conn.Open();
+
+                    using (SqlCommand cmd = new SqlCommand(sql, conn))
+                    {
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+
+                                customer = new CustomerSpender();
+                                customer.CustomerId = reader.GetInt32(0);
+                                customer.TotalSum = reader.GetDecimal(1);
+                                customers.Add(customer);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            return customers;
+        }
     }
 }
