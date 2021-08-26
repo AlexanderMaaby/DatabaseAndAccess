@@ -213,7 +213,11 @@ namespace ChinookAssignment
             return success;
         }
 
-
+        /// <summary>
+        /// Updates a customer entry in the database.
+        /// </summary>
+        /// <param name="customer">Object of type Customer that will update all data in the database for this entry.</param>
+        /// <returns>A bool symbolizing whether or not the insert was succesfull.</returns>
         public bool UpdateCustomer(Customer customer)
         {
             bool success = false;
