@@ -1,7 +1,6 @@
 ﻿using ChinookAssignment.Models;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 
 namespace ChinookAssignment
 {
@@ -17,10 +16,7 @@ namespace ChinookAssignment
             Console.WriteLine(testtest.CustomerFirstName + " " +  testtest.CustomerSurename);
             int x = 0;
             List<CustomerSpender> listetrist = repository.GetAllCustomersTotalAmountSpent();
-            foreach (CustomerSpender te in listetrist)
-            {
-                Console.WriteLine(te.CustomerId + "    -    " + te.TotalSum);
-            }
+            CustomerGenre gorg = repository.GetCustomerMostPopularGenre(12);
 
         }
     }

@@ -280,5 +280,46 @@ namespace ChinookAssignment
             }
             return customers;
         }
+
+        /// <summary>
+        /// Finds a given customers most popular genre, or genres in case of a tie.
+        /// </summary>
+        /// <param name="id">The CustomerId of the customer the genres should be returned for.</param>
+        /// <returns>Returns the requested data as an instance of the poco class CustomerGenre.</returns>
+        public CustomerGenre GetCustomerMostPopularGenre(int id)
+        {
+            CustomerGenre customerGenre = new CustomerGenre();
+            string sql = "SELECT TOP 1 WITH TIES c.CustomerId, c.FirstName, g.Name as FavouriteGenre, Count(g.Name) AS Purchases "
+            + "FROM Customer as c, Invoice as i, InvoiceLine as il, Track as t, Genre as g "
+            + " WHERE c.CustomerId = 12 AND c.CustomerId = i.CustomerId AND i.InvoiceId = il.InvoiceId AND il.TrackId = t.TrackId AND t.GenreId = g.GenreId "
+            + " GROUP BY c.FirstName, c.CustomerId, g.Name ORDER BY Purchases DESC";
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(ConnectionHelper.GetConnectionstring()))
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(sql, conn))
+                    {
+                        //cmd.Parameters.AddWithValue("@CustomerID", id);
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                Console.WriteLine(reader.GetString(2));
+                                customerGenre.CustomerId = reader.GetInt32(0);
+                                customerGenre.FirstName = reader.GetString(1);
+                                customerGenre.Genre.Add(reader.GetString(2));
+                                customerGenre.TotalTracks = reader.GetInt32(3);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            return customerGenre;
+        }
     }
 }

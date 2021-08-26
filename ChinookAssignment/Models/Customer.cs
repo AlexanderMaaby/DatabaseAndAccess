@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ChinookAssignment
+﻿namespace ChinookAssignment
 {
     /// <summary>
     /// A class that contains information about a specific customer. POCO class. 
