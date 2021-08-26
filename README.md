@@ -28,6 +28,7 @@ Create a database and access it.
 
 ## Install
 - Clone 
+- Run Chinook_SqlServer_AutoIncrementPKs to generate the database
 - Open in Visual Studio
 - Go to DataAccess/ConnectionHelper.cs -> Change DataSource in GetConnectionString() to your own db connection.
 - Open SSMS and run script to create the sample database Chinook.
