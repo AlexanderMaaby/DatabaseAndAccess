@@ -93,6 +93,11 @@ namespace ChinookAssignment
             }
             return customer;
         }
+
+        /// <summary>
+        /// Returns a List containing all the customers in the database. 
+        /// </summary>
+        /// <returns>Returns a Generic.List containing all customers in the database of type Customer.</returns>
         public List <Customer> GetAllCustomers()
         {
             List<Customer> customers = new List<Customer>();
@@ -133,7 +138,12 @@ namespace ChinookAssignment
             return customers;
         }
 
-
+        /// <summary>
+        /// Returns a List containing all the customers in the database limited by given offset an limit.
+        /// </summary>
+        /// <param name="limit">An int representing the amount of results the query should limit.</param>
+        /// <param name="offset">An int representing the index the query should start at.</param>
+        /// <returns>Returns a Generic.List containing all customers in the database of type Customer.</returns>
         public List<Customer> GetCustomersByLimitAndOffset(int limit, int offset)
         {
             List<Customer> customers = new List<Customer>();
@@ -171,6 +181,12 @@ namespace ChinookAssignment
             }
             return customers;
         }
+
+        /// <summary>
+        /// Adds a new customer to the database.
+        /// </summary>
+        /// <param name="customer">The Customer that should be added to the database.</param>
+        /// <returns>A bool symbolizing whether or not the insert was succesfull.</returns>
         public bool AddNewCustomer(Customer customer)
         {
             bool success = false;
