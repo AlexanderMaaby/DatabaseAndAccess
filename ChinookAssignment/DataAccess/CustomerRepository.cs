@@ -247,6 +247,10 @@ namespace ChinookAssignment
             return countries;
         }
 
+        /// <summary>
+        /// Finds the total amount of money spent by each customer in the database. 
+        /// </summary>
+        /// <returns>Returns the requested data as an instance of the poco class CustomerSpender.</returns>
         public List<CustomerSpender> GetAllCustomersTotalAmountSpent()
         {
             List<CustomerSpender> customers = new List<CustomerSpender>();
