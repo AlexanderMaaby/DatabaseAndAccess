@@ -32,7 +32,7 @@ namespace ChinookAssignment
                         {
                             while (reader.Read())
                             {
-                                customer.CustomerID = reader.GetValue(0).ToString();
+                                customer.CustomerID = reader.GetInt32(0);
                                 customer.CustomerFirstName = reader.GetString(1);
                                 customer.CustomerSurename = reader.GetString(2);
                                 customer.Country = reader.GetString(3);
@@ -55,7 +55,7 @@ namespace ChinookAssignment
         /// </summary>
         /// <param name="id">The id of the customer to be found in the database.</param>
         /// <returns>A single object of the type Customer.</returns>
-        public Customer GetCustomer(string id)
+        public Customer GetCustomer(int id)
         {
             Customer customer = new Customer();
             string sql = "SELECT CustomerId, FirstName, LastName, Country, PostalCode, Phone, Email FROM Customer" +
@@ -72,7 +72,7 @@ namespace ChinookAssignment
                         {
                             while (reader.Read())
                             {
-                                customer.CustomerID = reader.GetValue(0).ToString();
+                                customer.CustomerID = reader.GetInt32(0);
                                 customer.CustomerFirstName = reader.GetString(1);
                                 customer.CustomerSurename = reader.GetString(2);
                                 customer.Country = reader.GetString(3);
@@ -115,7 +115,7 @@ namespace ChinookAssignment
                             {
                                 
                                 customer = new Customer();
-                                customer.CustomerID = reader.GetValue(0).ToString();
+                                customer.CustomerID = reader.GetInt32(0);
                                 customer.CustomerFirstName = reader.GetString(1);
                                 customer.CustomerSurename = reader.GetString(2);
                                 customer.Country = reader.GetString(3);
@@ -159,7 +159,7 @@ namespace ChinookAssignment
                             {
 
                                 customer = new Customer();
-                                customer.CustomerID = reader.GetValue(0).ToString();
+                                customer.CustomerID = reader.GetInt32(0);
                                 customer.CustomerFirstName = reader.GetString(1);
                                 customer.CustomerSurename = reader.GetString(2);
                                 customer.Country = reader.GetString(3);
@@ -221,8 +221,8 @@ namespace ChinookAssignment
         public bool UpdateCustomer(Customer customer)
         {
             bool success = false;
-            string sql = "UPDATE Customer SET CustomerId = @CustomerId, FirstName = @FirstName, LastName = @LastName, Country = @Country "
-            + " PostalCode = @PostalCode, Phone = @Phone, Email = @Email";
+            string sql = "UPDATE Customer SET FirstName = @FirstName, LastName = @LastName, Country = @Country, "
+            + "PostalCode = @PostalCode, Phone = @Phone, Email = @Email WHERE CustomerId = @CustomerId";
             try
             {
                 using (SqlConnection conn = new SqlConnection(ConnectionHelper.GetConnectionstring()))

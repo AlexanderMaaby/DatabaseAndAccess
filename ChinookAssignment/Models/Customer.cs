@@ -5,7 +5,7 @@
     /// </summary>
     public class Customer
     {
-        public string CustomerID { get; set; }
+        public int CustomerID { get; set; }
         public string CustomerFirstName { get; set; }
         public string CustomerSurename { get; set; }
         public string Country { get; set; }
