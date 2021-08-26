@@ -18,6 +18,8 @@ namespace ChinookAssignment
             List<CustomerSpender> listetrist = repository.GetAllCustomersTotalAmountSpent();
             CustomerGenre gorg = repository.GetCustomerMostPopularGenre(12);
 
+            ///
+
         }
     }
 }
