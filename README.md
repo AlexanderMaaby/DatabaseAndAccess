@@ -38,7 +38,7 @@ The rest of the repo is dedicated to Appendix B.
 ## Usage
 - Run the application from Visual Studio.
 
-## Appendix B Class Diagram
+## Appendix A Class Diagram
 
 <img src="AppendixA/ClassDiagram.png" alt="banner" width="450"/>
 
