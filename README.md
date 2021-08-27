@@ -2,6 +2,8 @@
 
 Assignment 6
 Create a database and access it.
+Appendix A is found within the AppendixA folder.
+The rest of the repo is dedicated to Appendix B.
 
 ## Table of Contents
 - [Features](#features)
