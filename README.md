@@ -1,9 +1,9 @@
 # DatabaseAndAccess
 
 Assignment 6
-Create a database and access it.
-Appendix A is found within the AppendixA folder.
-The rest of the repo is dedicated to Appendix B.
+Create a database and access it.  
+Appendix A is found within the AppendixA folder.  
+The rest of the repo is dedicated to Appendix B.  
 
 ## Table of Contents
 - [Features](#features)
@@ -37,6 +37,10 @@ The rest of the repo is dedicated to Appendix B.
 
 ## Usage
 - Run the application from Visual Studio.
+
+## Appendix B Class Diagram
+
+<img src="https://www.noroff.no/images/docs/vp2018/Noroff-logo_STDM_vertikal_RGB.jpg" alt="banner" width="450"/>
 
 ## Maintainers
 - Mia Kristiansen
