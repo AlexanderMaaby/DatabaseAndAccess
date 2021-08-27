@@ -40,7 +40,7 @@ The rest of the repo is dedicated to Appendix B.
 
 ## Appendix B Class Diagram
 
-<img src="https://www.noroff.no/images/docs/vp2018/Noroff-logo_STDM_vertikal_RGB.jpg" alt="banner" width="450"/>
+<img src="AppendixA/ClassDiagram.png" alt="banner" width="450"/>
 
 ## Maintainers
 - Mia Kristiansen
