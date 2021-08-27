@@ -4,6 +4,10 @@ namespace ChinookAssignment
 {
     public class ConnectionHelper
     {
+        /// <summary>
+        /// Method that builds a connection string for connecting to the database.
+        /// </summary>
+        /// <returns>A connection string.</returns>
         public static string GetConnectionstring()
         {
             SqlConnectionStringBuilder connectionStringBuilder = new SqlConnectionStringBuilder();
