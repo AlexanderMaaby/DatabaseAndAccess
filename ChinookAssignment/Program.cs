@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChinookAssignment.Models;
+using System;
 
 namespace ChinookAssignment
 {
@@ -8,6 +9,9 @@ namespace ChinookAssignment
         {
             Console.WriteLine("Hello World!");
             CustomerRepository repository = new CustomerRepository();
+            Customer test = repository.GetCustomer(34);
+            CustomerGenre testtest = repository.GetCustomerMostPopularGenre(12);
+
         }
     }
 }

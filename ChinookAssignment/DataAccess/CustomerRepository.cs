@@ -76,9 +76,9 @@ namespace ChinookAssignment
                                 customer.CustomerID = reader.GetInt32(0);
                                 customer.CustomerFirstName = reader.GetString(1);
                                 customer.CustomerSurename = reader.GetString(2);
-                                customer.Country = reader.GetString(3);
-                                customer.PostalCode = reader.GetString(4);
-                                customer.Phone = reader.GetString(5);
+                                customer.Country = QuerySanitizer.SafeGetString(reader, 3);
+                                customer.PostalCode = QuerySanitizer.SafeGetString(reader, 4);
+                                customer.Phone = QuerySanitizer.SafeGetString(reader, 5);
                                 customer.Email = reader.GetString(6);
                             }
                         }
@@ -119,7 +119,7 @@ namespace ChinookAssignment
                                 customer.CustomerID = reader.GetInt32(0);
                                 customer.CustomerFirstName = reader.GetString(1);
                                 customer.CustomerSurename = reader.GetString(2);
-                                customer.Country = reader.GetString(3);
+                                customer.Country = QuerySanitizer.SafeGetString(reader, 3);
                                 customer.PostalCode = QuerySanitizer.SafeGetString(reader, 4);
                                 customer.Phone = QuerySanitizer.SafeGetString(reader, 5);
                                 customer.Email = reader.GetString(6);
@@ -163,7 +163,7 @@ namespace ChinookAssignment
                                 customer.CustomerID = reader.GetInt32(0);
                                 customer.CustomerFirstName = reader.GetString(1);
                                 customer.CustomerSurename = reader.GetString(2);
-                                customer.Country = reader.GetString(3);
+                                customer.Country = QuerySanitizer.SafeGetString(reader, 3);
                                 customer.PostalCode = QuerySanitizer.SafeGetString(reader, 4);
                                 customer.Phone = QuerySanitizer.SafeGetString(reader, 5);
                                 customer.Email = reader.GetString(6);
@@ -306,7 +306,6 @@ namespace ChinookAssignment
                         {
                             while (reader.Read())
                             {
-
                                 customer = new CustomerSpender();
                                 customer.CustomerId = reader.GetInt32(0);
                                 customer.TotalSum = reader.GetDecimal(1);
@@ -333,7 +332,7 @@ namespace ChinookAssignment
             CustomerGenre customerGenre = new CustomerGenre();
             string sql = "SELECT TOP 1 WITH TIES c.CustomerId, c.FirstName, g.Name as FavouriteGenre, Count(g.Name) AS Purchases "
             + "FROM Customer as c, Invoice as i, InvoiceLine as il, Track as t, Genre as g "
-            + " WHERE c.CustomerId = 12 AND c.CustomerId = i.CustomerId AND i.InvoiceId = il.InvoiceId AND il.TrackId = t.TrackId AND t.GenreId = g.GenreId "
+            + " WHERE c.CustomerId = @CustomerID AND c.CustomerId = i.CustomerId AND i.InvoiceId = il.InvoiceId AND il.TrackId = t.TrackId AND t.GenreId = g.GenreId "
             + " GROUP BY c.FirstName, c.CustomerId, g.Name ORDER BY Purchases DESC";
             try
             {
@@ -342,12 +341,11 @@ namespace ChinookAssignment
                     conn.Open();
                     using (SqlCommand cmd = new SqlCommand(sql, conn))
                     {
-                        //cmd.Parameters.AddWithValue("@CustomerID", id);
+                        cmd.Parameters.AddWithValue("@CustomerID", id);
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             while (reader.Read())
                             {
-                                Console.WriteLine(reader.GetString(2));
                                 customerGenre.CustomerId = reader.GetInt32(0);
                                 customerGenre.FirstName = reader.GetString(1);
                                 customerGenre.Genre.Add(reader.GetString(2));
